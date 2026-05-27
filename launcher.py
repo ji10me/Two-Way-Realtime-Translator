@@ -188,8 +188,12 @@ def main():
                                 "--extra-index-url", "https://abetlen.github.io/llama-cpp-python/whl/cpu", 
                                 "--force-reinstall"], check=True)
 
-    except subprocess.CalledProcessError as e:
+    except Exception as e:
         print(f"[WARNING] セットアップ中にエラーが発生しました: {e}")
+        import traceback
+        with open("install_error.log", "w", encoding="utf-8") as f:
+            f.write(f"Setup Error: {e}\n")
+            traceback.print_exc(file=f)
     
     # 5. main.py の実行
     print("[INFO] VRChat Translator を起動します...")
@@ -199,10 +203,20 @@ def main():
         sys.exit(1)
         
     try:
-        subprocess.run([python_exe, "main.py"])
+        res = subprocess.run([python_exe, "main.py"])
+        if res.returncode != 0:
+            print(f"[ERROR] main.py が終了コード {res.returncode} で異常終了しました。")
+            with open("install_error.log", "a", encoding="utf-8") as f:
+                f.write(f"main.py exited with code {res.returncode}\n")
+            input("続行するには何かキーを押してください . . .")
     except Exception as e:
         print(f"[ERROR] プログラムの起動に失敗しました: {e}")
+        import traceback
+        with open("install_error.log", "w", encoding="utf-8") as f:
+            f.write(f"Startup Error: {e}\n")
+            traceback.print_exc(file=f)
         input("続行するには何かキーを押してください . . .")
+
 
 if __name__ == "__main__":
     main()

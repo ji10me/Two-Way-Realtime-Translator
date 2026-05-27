@@ -178,12 +178,256 @@ LANG_NAME_MAP = {
     "Russian (ロシア語)": "Russian"
 }
 
+UI_LOCALIZATION = {
+    "US": {
+        "win_title": "Two-Way Realtime Translator (Moonshine High-Speed Edition)",
+        "header": "Two-Way Realtime Translator\n(Moonshine + Whisper Hybrid)",
+        "listen_frame": "【Partner's Voice (Listening / Moonshine)】",
+        "speak_frame": "【Your Voice (Speaking / Whisper)】",
+        "device": "Device:",
+        "stt": "STT Lang:",
+        "mt": "➡ Target:",
+        "osc": "Send to VRChat ChatBox (OSC)",
+        "start_btn": "Start (翻訳開始)",
+        "stop_btn": "Stop (停止)",
+        "init_log": "System started. Please select devices, languages, and click 'Start'.",
+        "err_no_device": "Error: Configured devices not found. Check connection.",
+        "initializing": "\n--- Initializing ---",
+        "stopping": "Stopping...",
+        "stopped": "--- Stopped ---",
+        "llm_loading": "Loading Hy-MT2 (LLM)...",
+        "gpu_loaded": "-> Loaded in GPU mode",
+        "gpu_fail_cpu_retry": "-> GPU mode failed. Retrying in CPU mode... ",
+        "cpu_loaded": "-> Loaded in CPU mode",
+        "cpu_fail": "-> CPU mode also failed: ",
+        "whisper_loading": "Loading Faster-Whisper...",
+        "whisper_gpu": "-> Running in GPU (CUDA) mode",
+        "whisper_cpu_fail": "-> GPU (CUDA) init failed. Running in CPU mode. ",
+        "moonshine_loading_en": "Loading Moonshine (EN / Super-fast)...",
+        "moonshine_loaded_en": "-> Loaded Moonshine (for English)",
+        "moonshine_fail_en": "-> Moonshine EN init failed: ",
+        "moonshine_prep_es": "Preparing Moonshine (ES / Super-fast) model...",
+        "moonshine_loading_es": "Loading Moonshine (ES / Super-fast)...",
+        "moonshine_loaded_es": "-> Loaded Moonshine (for Spanish)",
+        "moonshine_fail_es": "-> Moonshine ES init failed: ",
+        "ready": "--- Ready! Translation started ---",
+        "partner": "Partner",
+        "me": "Me",
+        "translation": "Translation",
+        "chatbox": "ChatBox"
+    },
+    "JP": {
+        "win_title": "双方向リアルタイム翻訳 (Moonshine高速版)",
+        "header": "双方向リアルタイム翻訳\n(Moonshine + Whisper ハイブリッド)",
+        "listen_frame": "【相手の音声 (リスニング・英語推奨/Moonshine)】",
+        "speak_frame": "【自分の音声 (スピーキング・日本語推奨/Whisper)】",
+        "device": "デバイス:",
+        "stt": "認識言語:",
+        "mt": "➡ 翻訳先:",
+        "osc": "VRChat ChatBox (OSC) に送信する",
+        "start_btn": "翻訳開始 (Start)",
+        "stop_btn": "停止 (Stop)",
+        "init_log": "システムを起動しました。デバイスと言語を選択して「開始」を押してください。",
+        "err_no_device": "エラー: 設定されたデバイスが見つかりません。接続を確認してください。",
+        "initializing": "\n--- 初期化中 ---",
+        "stopping": "停止処理を行っています...",
+        "stopped": "--- 停止しました ---",
+        "llm_loading": "Hy-MT2 (LLM) をロード中...",
+        "gpu_loaded": "-> GPU モードでロードしました",
+        "gpu_fail_cpu_retry": "-> GPU モード失敗。CPU モードで再試行します... ",
+        "cpu_loaded": "-> CPU モードでロードしました",
+        "cpu_fail": "-> CPU モードも失敗しました: ",
+        "whisper_loading": "Faster-Whisper (スピーキング用) をロード中...",
+        "whisper_gpu": "-> Faster-Whisper GPU モードでロードしました",
+        "whisper_cpu_fail": "-> Faster-Whisper GPU初期化失敗。CPUモードで実行します。 ",
+        "moonshine_loading_en": "Moonshine (英語音声認識・爆速) をロード中...",
+        "moonshine_loaded_en": "-> Moonshine (英語用) をロードしました",
+        "moonshine_fail_en": "-> Moonshine 英語初期化失敗: ",
+        "moonshine_prep_es": "Moonshine (スペイン語音声認識・爆速) モデルを準備中...",
+        "moonshine_loading_es": "Moonshine (スペイン語音声認識・爆速) をロード中...",
+        "moonshine_loaded_es": "-> Moonshine (スペイン語用) をロードしました",
+        "moonshine_fail_es": "-> Moonshine スペイン語初期化失敗: ",
+        "ready": "--- 準備完了！ 翻訳を開始しました ---",
+        "partner": "相手",
+        "me": "自分",
+        "translation": "翻訳",
+        "chatbox": "ChatBox"
+    },
+    "ES": {
+        "win_title": "Traductor en tiempo real bidireccional (Edición rápida Moonshine)",
+        "header": "Traductor en tiempo real bidireccional\n(Híbrido Moonshine + Whisper)",
+        "listen_frame": "【Voz del compañero (Escucha / Moonshine)】",
+        "speak_frame": "【Tu voz (Habla / Whisper)】",
+        "device": "Dispositivo:",
+        "stt": "Idioma STT:",
+        "mt": "➡ Destino:",
+        "osc": "Enviar a VRChat ChatBox (OSC)",
+        "start_btn": "Iniciar traducción (Start)",
+        "stop_btn": "Detener (Stop)",
+        "init_log": "Sistema iniciado. Seleccione los dispositivos, los idiomas y haga clic en 'Iniciar'.",
+        "err_no_device": "Error: Dispositivos configurados no encontrados. Verifique la conexión.",
+        "initializing": "\n--- Inicializando ---",
+        "stopping": "Deteniendo...",
+        "stopped": "--- Detenido ---",
+        "llm_loading": "Cargando Hy-MT2 (LLM)...",
+        "gpu_loaded": "-> Cargado en modo GPU",
+        "gpu_fail_cpu_retry": "-> Error en GPU. Reintentando en modo CPU... ",
+        "cpu_loaded": "-> Cargado en modo CPU",
+        "cpu_fail": "-> También falló el modo CPU: ",
+        "whisper_loading": "Cargando Faster-Whisper...",
+        "whisper_gpu": "-> Ejecutándose en modo GPU (CUDA)",
+        "whisper_cpu_fail": "-> Falló la inicialización de GPU (CUDA). Ejecutándose en modo CPU. ",
+        "moonshine_loading_en": "Cargando Moonshine (EN / Superrápido)...",
+        "moonshine_loaded_en": "-> Moonshine (para inglés) cargado",
+        "moonshine_fail_en": "-> Falló la inicialización de Moonshine EN: ",
+        "moonshine_prep_es": "Preparando el modelo Moonshine (ES / Superrápido)...",
+        "moonshine_loading_es": "Cargando Moonshine (ES / Superrápido)...",
+        "moonshine_loaded_es": "-> Moonshine (para español) cargado",
+        "moonshine_fail_es": "-> Falló la inicialización de Moonshine ES: ",
+        "ready": "--- ¡Preparado! Traducción iniciada ---",
+        "partner": "Compañero",
+        "me": "Yo",
+        "translation": "Traducción",
+        "chatbox": "ChatBox"
+    },
+    "RU": {
+        "win_title": "Двусторонний переводчик реального времени (Быстрая версия Moonshine)",
+        "header": "Двусторонний переводчик реального времени\n(Гибрид Moonshine + Whisper)",
+        "listen_frame": "【Голос собеседника (Прослушивание / Moonshine)】",
+        "speak_frame": "【Ваш голос (Говорение / Whisper)】",
+        "device": "Устройство:",
+        "stt": "Язык STT:",
+        "mt": "➡ Перевод:",
+        "osc": "Отправлять в VRChat ChatBox (OSC)",
+        "start_btn": "Начать перевод (Start)",
+        "stop_btn": "Остановить (Stop)",
+        "init_log": "Система запущена. Выберите устройства, языки и нажмите «Начать».",
+        "err_no_device": "Ошибка: Настроенные устройства не найдены. Проверьте подключение.",
+        "initializing": "\n--- Инициализация ---",
+        "stopping": "Остановка...",
+        "stopped": "--- Останавливать ---",
+        "llm_loading": "Загрузка Hy-MT2 (LLM)...",
+        "gpu_loaded": "-> Загружено в режиме GPU",
+        "gpu_fail_cpu_retry": "-> Ошибка GPU. Повторная попытка в режиме CPU... ",
+        "cpu_loaded": "-> Загруровано в режиме CPU",
+        "cpu_fail": "-> Ошибка также и в режиме CPU: ",
+        "whisper_loading": "Загрузка Faster-Whisper...",
+        "whisper_gpu": "-> Работает в режиме GPU (CUDA)",
+        "whisper_cpu_fail": "-> Ошибка инициализации GPU (CUDA). Работает в режиме CPU. ",
+        "moonshine_loading_en": "Загрузка Moonshine (EN / Супербыстро)...",
+        "moonshine_loaded_en": "-> Moonshine (для английского) загружен",
+        "moonshine_fail_en": "-> Ошибка инициализации Moonshine EN: ",
+        "moonshine_prep_es": "Подготовка модели Moonshine (ES / Супербыстро)...",
+        "moonshine_loading_es": "Загрузка Moonshine (ES /  Супербыстро)...",
+        "moonshine_loaded_es": "-> Moonshine (для испанского) загружен",
+        "moonshine_fail_es": "-> Ошибка инициализации Moonshine ES: ",
+        "ready": "--- Готово! Перевод начат ---",
+        "partner": "Собеседник",
+        "me": "Я",
+        "translation": "Перевод",
+        "chatbox": "ChatBox"
+    },
+    "中": {
+        "win_title": "双向实时翻译 (Moonshine 高速版)",
+        "header": "双向实时翻译\n(Moonshine + Whisper 混合驱动)",
+        "listen_frame": "【对方语音 (听译 / Moonshine)】",
+        "speak_frame": "【我的语音 (说译 / Whisper)】",
+        "device": "设备:",
+        "stt": "识别语言:",
+        "mt": "➡ 翻译至:",
+        "osc": "发送至 VRChat ChatBox (OSC)",
+        "start_btn": "开始翻译 (Start)",
+        "stop_btn": "停止翻译 (Stop)",
+        "init_log": "系统已启动。请选择设备与语言，然后点击“开始”。",
+        "err_no_device": "错误: 未找到配置的设备。请检查连接。",
+        "initializing": "\n--- 初始化中 ---",
+        "stopping": "正在停止...",
+        "stopped": "--- 已停止 ---",
+        "llm_loading": "正在加载 Hy-MT2 (LLM)...",
+        "gpu_loaded": "-> 已在 GPU 模式下加载",
+        "gpu_fail_cpu_retry": "-> GPU 模式启动失败。正在尝试 CPU 模式... ",
+        "cpu_loaded": "-> 已在 CPU 模式下加载",
+        "cpu_fail": "-> CPU 模式加载也失败: ",
+        "whisper_loading": "正在加载 Faster-Whisper...",
+        "whisper_gpu": "-> 正在 GPU (CUDA) 模式下运行",
+        "whisper_cpu_fail": "-> GPU (CUDA) 初始化失败。正在 CPU 模式下运行。 ",
+        "moonshine_loading_en": "正在加载 Moonshine (英文 / 超快速)...",
+        "moonshine_loaded_en": "-> 英文 Moonshine 已加载",
+        "moonshine_fail_en": "-> 英文 Moonshine 初始化失败: ",
+        "moonshine_prep_es": "正在准备 Moonshine (西班牙文 / 超快速) 模型...",
+        "moonshine_loading_es": "正在加载 Moonshine (西班牙文 / 超快速)...",
+        "moonshine_loaded_es": "-> 西班牙文 Moonshine 已加载",
+        "moonshine_fail_es": "-> 西班牙文 Moonshine 初始化失败: ",
+        "ready": "--- 准备就绪！翻译已开始 ---",
+        "partner": "对方",
+        "me": "自己",
+        "translation": "翻译",
+        "chatbox": "ChatBox"
+    },
+    "한": {
+        "win_title": "양방향 실시간 번역기 (Moonshine 고속 에디션)",
+        "header": "양방향 실시간 번역기\n(Moonshine + Whisper 하이브리드)",
+        "listen_frame": "【상대방 음성 (듣기 / Moonshine)】",
+        "speak_frame": "【내 음성 (말하기 / Whisper)】",
+        "device": "장치:",
+        "stt": "인식 언어:",
+        "mt": "➡ 번역 대상:",
+        "osc": "VRChat ChatBox (OSC)로 전송",
+        "start_btn": "번역 시작 (Start)",
+        "stop_btn": "정지 (Stop)",
+        "init_log": "시스템이 시작되었습니다. 장치와 언어를 선택한 다음 '시작'을 누르세요.",
+        "err_no_device": "오류: 설정된 장치를 찾을 수 없습니다. 연결을 확인하세요.",
+        "initializing": "\n--- 초기화 중 ---",
+        "stopping": "정지 처리 중...",
+        "stopped": "--- 정지됨 ---",
+        "llm_loading": "Hy-MT2 (LLM) 로드 중...",
+        "gpu_loaded": "-> GPU 모드로 로드되었습니다",
+        "gpu_fail_cpu_retry": "-> GPU 모드 실패. CPU 모드로 재시도합니다... ",
+        "cpu_loaded": "-> CPU 모드로 로드되었습니다",
+        "cpu_fail": "-> CPU 모드도 실패했습니다: ",
+        "whisper_loading": "Faster-Whisper 로드 중...",
+        "whisper_gpu": "-> GPU (CUDA) 모드로 실행 중",
+        "whisper_cpu_fail": "-> GPU (CUDA) 초기화 실패. CPU 모드로 실행합니다. ",
+        "moonshine_loading_en": "Moonshine (영어 / 초고속) 로드 중...",
+        "moonshine_loaded_en": "-> 영어용 Moonshine이 로드되었습니다",
+        "moonshine_fail_en": "-> 영어 Moonshine 초기화 실패: ",
+        "moonshine_prep_es": "Moonshine (스페인어 / 초고속) 모델 준비 중...",
+        "moonshine_loading_es": "Moonshine (스페인어 / 초고속) 로드 중...",
+        "moonshine_loaded_es": "-> 스페인어용 Moonshine이 로드되었습니다",
+        "moonshine_fail_es": "-> 스페인어 Moonshine 초기화 실패: ",
+        "ready": "--- 준비 완료! 번역이 시작되었습니다 ---",
+        "partner": "상대방",
+        "me": "자신",
+        "translation": "번역",
+        "chatbox": "ChatBox"
+    }
+}
+
 # ==========================================
 # HELPER CLASSES
 def get_device_name_only(combo_value):
     if "]" in combo_value:
         return combo_value.split("]", 1)[1].strip()
     return combo_value
+
+def find_best_device_match(saved_name, combo_values):
+    if not saved_name:
+        return combo_values[0] if combo_values else ""
+    if saved_name in combo_values:
+        return saved_name
+    
+    clean_saved = saved_name
+    if clean_saved.startswith("[") and "]" in clean_saved:
+        clean_saved = clean_saved.split("]", 1)[1].strip()
+        
+    for val in combo_values:
+        clean_val = val
+        if clean_val.startswith("[") and "]" in clean_val:
+            clean_val = clean_val.split("]", 1)[1].strip()
+        if clean_saved.lower() in clean_val.lower() or clean_val.lower() in clean_saved.lower():
+            return val
+            
+    return combo_values[0] if combo_values else ""
 
 def load_config():
     default_config = {
@@ -193,7 +437,8 @@ def load_config():
         "listen_mt": "Japanese (日本語)",
         "speak_stt": "Japanese (日本語)",
         "speak_mt": "English (英語)",
-        "use_osc": True
+        "use_osc": True,
+        "ui_lang": "JP"
     }
     if os.path.exists(CONFIG_FILE):
         try:
@@ -273,7 +518,8 @@ class AudioRecorder:
     def __init__(self, device_idx, name, sample_rate=16000, silence_duration=1.0, threshold=0.01, max_duration=8.0):
         self.device_idx = device_idx
         self.name = name
-        self.sample_rate = sample_rate
+        self.target_sample_rate = sample_rate
+        self.sample_rate = sample_rate  # Will be adjusted if 16000Hz is not supported
         self.silence_duration = silence_duration
         self.threshold = threshold
         self.max_duration = max_duration
@@ -283,6 +529,17 @@ class AudioRecorder:
         self.output_queue = queue.Queue()
         self.stream = None
         
+    def resample(self, audio, orig_sr, target_sr):
+        if orig_sr == target_sr:
+            return audio
+        duration = len(audio) / orig_sr
+        num_target_samples = int(duration * target_sr)
+        return np.interp(
+            np.linspace(0, len(audio), num_target_samples, endpoint=False),
+            np.arange(len(audio)),
+            audio
+        ).astype(np.float32)
+
     def callback(self, indata, frames, time_info, status):
         rms = np.sqrt(np.mean(indata**2))
         
@@ -297,7 +554,8 @@ class AudioRecorder:
                 silence_limit = int((self.silence_duration * self.sample_rate) / frames)
                 if self.silence_chunks > silence_limit:
                     audio_data = np.concatenate(self.audio_chunks, axis=0)
-                    self.output_queue.put(audio_data)
+                    resampled = self.resample(audio_data, self.sample_rate, self.target_sample_rate)
+                    self.output_queue.put(resampled)
                     self.audio_chunks = []
                     self.is_recording_active = False
                     self.silence_chunks = 0
@@ -308,23 +566,80 @@ class AudioRecorder:
             total_samples = sum(len(c) for c in self.audio_chunks)
             if total_samples >= self.max_duration * self.sample_rate:
                 audio_data = np.concatenate(self.audio_chunks, axis=0)
-                self.output_queue.put(audio_data)
+                resampled = self.resample(audio_data, self.sample_rate, self.target_sample_rate)
+                self.output_queue.put(resampled)
                 self.audio_chunks = []
                 self.is_recording_active = False
                 self.silence_chunks = 0
 
     def start(self, log_callback):
-        self.stream = sd.InputStream(device=self.device_idx,
-                                     channels=1,
-                                     samplerate=self.sample_rate,
-                                     callback=self.callback)
-        self.stream.start()
-        log_callback(f"[{self.name}] 録音を開始しました。")
+        # 1. Try target sample rate (16000Hz) first
+        try:
+            self.stream = sd.InputStream(device=self.device_idx,
+                                         channels=1,
+                                         samplerate=self.target_sample_rate,
+                                         callback=self.callback)
+            self.stream.start()
+            self.sample_rate = self.target_sample_rate
+            log_callback(f"[{self.name}] 16000Hz で録音を開始しました。")
+            return
+        except Exception as e:
+            logger.warning(f"Failed to start stream at 16000Hz on device {self.device_idx}: {e}")
+
+        # 2. Try default sample rate as fallback
+        try:
+            dev_info = sd.query_devices(self.device_idx)
+            default_sr = int(dev_info['default_samplerate'])
+            self.stream = sd.InputStream(device=self.device_idx,
+                                         channels=1,
+                                         samplerate=default_sr,
+                                         callback=self.callback)
+            self.stream.start()
+            self.sample_rate = default_sr
+            log_callback(f"[{self.name}] デフォルトレート {default_sr}Hz で録音を開始しました（自動リサンプリング有効）。")
+        except Exception as e2:
+            logger.critical(f"Failed to start stream at default rate on device {self.device_idx}: {e2}")
+            raise e2
 
     def stop(self):
         if self.stream:
             self.stream.stop()
             self.stream.close()
+
+
+def is_hallucination_or_excessive_repeat(text):
+    if not text:
+        return False
+    # Check 1: Length is too short, no need to check
+    if len(text) < 25:
+        return False
+        
+    # Check 2: Low unique character variety in long text (e.g. "hahahaha...", "はっはっはっ...")
+    unique_chars = set(text)
+    if len(unique_chars) <= 3:
+        return True
+        
+    # Check 3: Ratio of unique characters is extremely low in long text
+    if len(text) >= 40 and (len(unique_chars) / len(text)) < 0.08:
+        return True
+        
+    # Check 4: Substring repetitions (e.g. "エッティエッティエッティ...")
+    # Try to find repeating patterns of length 2 to 6
+    for pattern_len in range(2, 7):
+        pattern = text[:pattern_len]
+        # If the text is mostly filled with this pattern
+        expected_repeats = len(text) // pattern_len
+        if expected_repeats >= 4:
+            matched_len = 0
+            for i in range(expected_repeats):
+                if text[i*pattern_len : (i+1)*pattern_len] == pattern:
+                    matched_len += pattern_len
+                else:
+                    break
+            if matched_len >= 20 and (matched_len / len(text)) > 0.8:
+                return True
+                
+    return False
 
 def translate_text(llm, text, source_lang, target_lang):
     if source_lang == target_lang:
@@ -368,36 +683,89 @@ class VRChatTranslatorApp(ctk.CTk):
         self.config = load_config()
         
         self.setup_ui()
+        self.update_ui_text()
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
         
     def populate_devices(self):
         devs = sd.query_devices()
+        hostapis = sd.query_hostapis()
+        
+        self.devices_input = []   # list of (index, name, hostapi)
+        self.devices_output = []  # list of (index, name, hostapi)
+        
+        self.combo_speaker_values = []
+        self.combo_mic_values = []
+        
         for i, dev in enumerate(devs):
+            api_name = hostapis[dev['hostapi']]['name']
+            # Limit to MME and Windows WASAPI to avoid duplicate clutter and WDM-KS issues
+            if api_name not in ["MME", "Windows WASAPI"]:
+                continue
+                
+            raw_name = dev['name']
+            clean_name = raw_name
+            try:
+                # Fix encoding mismatch commonly returned by sounddevice on Windows
+                clean_name = raw_name.encode('latin1').decode('cp932')
+            except Exception:
+                pass
+                
+            display_name = f"[{api_name}] {clean_name}"
+            
+            # Input devices
             if dev['max_input_channels'] > 0:
-                self.devices.append((i, dev['name']))
-                self.device_names.append(f"[{i}] {dev['name']}")
+                self.devices_input.append((i, clean_name, api_name))
+                self.combo_mic_values.append(display_name)
+                
+            # Output devices
+            if dev['max_output_channels'] > 0:
+                self.devices_output.append((i, clean_name, api_name))
+                self.combo_speaker_values.append(display_name)
+                
+        # Also add all input devices to speaker combo values so users can choose direct loopback input or cable outputs
+        for i, clean_name, api_name in self.devices_input:
+            display_name = f"[{api_name}] {clean_name}"
+            if display_name not in self.combo_speaker_values:
+                self.combo_speaker_values.append(display_name)
                 
     def setup_ui(self):
         # Header
         self.header = ctk.CTkLabel(self, text="Two-Way Realtime Translator\n(Moonshine + Whisper Hybrid)", font=ctk.CTkFont(size=22, weight="bold"))
         self.header.pack(pady=(15, 5))
         
+        # Language Switch Buttons Container at Top Right
+        self.lang_btn_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.lang_btn_frame.place(relx=1.0, rely=0.0, anchor="ne", x=-10, y=10)
+        
+        self.lang_buttons = {}
+        languages = ["US", "JP", "ES", "RU", "中", "한"]
+        for lang in languages:
+            btn = ctk.CTkButton(
+                self.lang_btn_frame, text=lang, width=32, height=20,
+                corner_radius=4, font=ctk.CTkFont(size=10, weight="bold"),
+                fg_color="#4A5568", hover_color="#2D3748",
+                command=lambda l=lang: self.change_ui_lang(l)
+            )
+            btn.pack(side="left", padx=2)
+            self.lang_buttons[lang] = btn
+        
         # --- Listen Settings (相手の音声) ---
         self.frame_listen = ctk.CTkFrame(self)
         self.frame_listen.pack(pady=5, padx=20, fill="x")
-        ctk.CTkLabel(self.frame_listen, text="【相手の音声 (リスニング・英語固定/Moonshine)】", font=ctk.CTkFont(weight="bold")).grid(row=0, column=0, columnspan=4, pady=(10,5), padx=10, sticky="w")
+        self.lbl_listen_title = ctk.CTkLabel(self.frame_listen, text="【相手の音声 (リスニング・英語固定/Moonshine)】", font=ctk.CTkFont(weight="bold"))
+        self.lbl_listen_title.grid(row=0, column=0, columnspan=4, pady=(10,5), padx=10, sticky="w")
         
-        ctk.CTkLabel(self.frame_listen, text="デバイス:").grid(row=1, column=0, padx=10, pady=5, sticky="w")
-        self.combo_speaker = ctk.CTkComboBox(self.frame_listen, values=self.device_names, width=300, command=self.on_setting_changed)
+        self.lbl_listen_device = ctk.CTkLabel(self.frame_listen, text="デバイス:")
+        self.lbl_listen_device.grid(row=1, column=0, padx=10, pady=5, sticky="w")
+        self.combo_speaker = ctk.CTkComboBox(self.frame_listen, values=self.combo_speaker_values, width=300, command=self.on_setting_changed)
         self.combo_speaker.grid(row=1, column=1, columnspan=3, padx=10, pady=5, sticky="w")
         spk_name = self.config.get("speaker_device", "")
-        if spk_name:
-            for name in self.device_names:
-                if get_device_name_only(name) == spk_name:
-                    self.combo_speaker.set(name)
-                    break
+        matched_spk = find_best_device_match(spk_name, self.combo_speaker_values)
+        if matched_spk:
+            self.combo_speaker.set(matched_spk)
             
-        ctk.CTkLabel(self.frame_listen, text="認識言語:").grid(row=2, column=0, padx=10, pady=5, sticky="w")
+        self.lbl_listen_stt = ctk.CTkLabel(self.frame_listen, text="認識言語:")
+        self.lbl_listen_stt.grid(row=2, column=0, padx=10, pady=5, sticky="w")
         self.combo_listen_stt = ctk.CTkComboBox(self.frame_listen, values=STT_LANGUAGES, width=150, command=self.on_setting_changed)
         self.combo_listen_stt.grid(row=2, column=1, padx=10, pady=5, sticky="w")
         if self.config.get("listen_stt") in STT_LANGUAGES:
@@ -405,32 +773,35 @@ class VRChatTranslatorApp(ctk.CTk):
         else:
             self.combo_listen_stt.set("English (英語)")
             
-        ctk.CTkLabel(self.frame_listen, text="➡ 翻訳先:").grid(row=2, column=2, padx=10, pady=5, sticky="w")
+        self.lbl_listen_mt = ctk.CTkLabel(self.frame_listen, text="➡ 翻訳先:")
+        self.lbl_listen_mt.grid(row=2, column=2, padx=10, pady=5, sticky="w")
         self.combo_listen_mt = ctk.CTkComboBox(self.frame_listen, values=MT_LANGUAGES, width=150, command=self.on_setting_changed)
         self.combo_listen_mt.grid(row=2, column=3, padx=10, pady=5, sticky="w")
         if self.config["listen_mt"] in MT_LANGUAGES: self.combo_listen_mt.set(self.config["listen_mt"])
-
+ 
         # --- Speak Settings (自分の音声) ---
         self.frame_speak = ctk.CTkFrame(self)
         self.frame_speak.pack(pady=5, padx=20, fill="x")
-        ctk.CTkLabel(self.frame_speak, text="【自分の音声 (スピーキング・日本語推奨/Whisper)】", font=ctk.CTkFont(weight="bold")).grid(row=0, column=0, columnspan=4, pady=(10,5), padx=10, sticky="w")
+        self.lbl_speak_title = ctk.CTkLabel(self.frame_speak, text="【自分の音声 (スピーキング・日本語推奨/Whisper)】", font=ctk.CTkFont(weight="bold"))
+        self.lbl_speak_title.grid(row=0, column=0, columnspan=4, pady=(10,5), padx=10, sticky="w")
         
-        ctk.CTkLabel(self.frame_speak, text="デバイス:").grid(row=1, column=0, padx=10, pady=5, sticky="w")
-        self.combo_mic = ctk.CTkComboBox(self.frame_speak, values=self.device_names, width=300, command=self.on_setting_changed)
+        self.lbl_speak_device = ctk.CTkLabel(self.frame_speak, text="デバイス:")
+        self.lbl_speak_device.grid(row=1, column=0, padx=10, pady=5, sticky="w")
+        self.combo_mic = ctk.CTkComboBox(self.frame_speak, values=self.combo_mic_values, width=300, command=self.on_setting_changed)
         self.combo_mic.grid(row=1, column=1, columnspan=3, padx=10, pady=5, sticky="w")
         mic_name = self.config.get("mic_device", "")
-        if mic_name:
-            for name in self.device_names:
-                if get_device_name_only(name) == mic_name:
-                    self.combo_mic.set(name)
-                    break
+        matched_mic = find_best_device_match(mic_name, self.combo_mic_values)
+        if matched_mic:
+            self.combo_mic.set(matched_mic)
             
-        ctk.CTkLabel(self.frame_speak, text="認識言語:").grid(row=2, column=0, padx=10, pady=5, sticky="w")
+        self.lbl_speak_stt = ctk.CTkLabel(self.frame_speak, text="認識言語:")
+        self.lbl_speak_stt.grid(row=2, column=0, padx=10, pady=5, sticky="w")
         self.combo_speak_stt = ctk.CTkComboBox(self.frame_speak, values=STT_LANGUAGES, width=150, command=self.on_setting_changed)
         self.combo_speak_stt.grid(row=2, column=1, padx=10, pady=5, sticky="w")
         if self.config["speak_stt"] in STT_LANGUAGES: self.combo_speak_stt.set(self.config["speak_stt"])
             
-        ctk.CTkLabel(self.frame_speak, text="➡ 翻訳先:").grid(row=2, column=2, padx=10, pady=5, sticky="w")
+        self.lbl_speak_mt = ctk.CTkLabel(self.frame_speak, text="➡ 翻訳先:")
+        self.lbl_speak_mt.grid(row=2, column=2, padx=10, pady=5, sticky="w")
         self.combo_speak_mt = ctk.CTkComboBox(self.frame_speak, values=MT_LANGUAGES, width=150, command=self.on_setting_changed)
         self.combo_speak_mt.grid(row=2, column=3, padx=10, pady=5, sticky="w")
         if self.config["speak_mt"] in MT_LANGUAGES: self.combo_speak_mt.set(self.config["speak_mt"])
@@ -458,7 +829,7 @@ class VRChatTranslatorApp(ctk.CTk):
         self.log_box.pack(pady=(5, 10), padx=20, fill="both", expand=True)
         self.log_box.configure(state="disabled")
         
-        self.log("システムを起動しました。デバイスと言語を選択して「開始」を押してください。")
+        self.log_localized("init_log")
  
     def log(self, message):
         logger.info(message)
@@ -468,6 +839,43 @@ class VRChatTranslatorApp(ctk.CTk):
             self.log_box.see("end")
             self.log_box.configure(state="disabled")
         self.after(0, _append)
+
+    def log_localized(self, key, suffix=""):
+        lang = self.config.get("ui_lang", "JP")
+        loc = UI_LOCALIZATION.get(lang, UI_LOCALIZATION["JP"])
+        msg = loc.get(key, key) + suffix
+        self.log(msg)
+
+    def change_ui_lang(self, lang):
+        self.config["ui_lang"] = lang
+        save_config(self.config)
+        self.update_ui_text()
+
+    def update_ui_text(self):
+        lang = self.config.get("ui_lang", "JP")
+        loc = UI_LOCALIZATION.get(lang, UI_LOCALIZATION["JP"])
+        
+        self.title(loc["win_title"])
+        self.header.configure(text=loc["header"])
+        self.lbl_listen_title.configure(text=loc["listen_frame"])
+        self.lbl_listen_device.configure(text=loc["device"])
+        self.lbl_listen_stt.configure(text=loc["stt"])
+        self.lbl_listen_mt.configure(text=loc["mt"])
+        
+        self.lbl_speak_title.configure(text=loc["speak_frame"])
+        self.lbl_speak_device.configure(text=loc["device"])
+        self.lbl_speak_stt.configure(text=loc["stt"])
+        self.lbl_speak_mt.configure(text=loc["mt"])
+        
+        self.check_osc.configure(text=loc["osc"])
+        self.btn_start.configure(text=loc["start_btn"])
+        self.btn_stop.configure(text=loc["stop_btn"])
+        
+        for l, btn in self.lang_buttons.items():
+            if l == lang:
+                btn.configure(fg_color="#3B82F6", hover_color="#1D4ED8")
+            else:
+                btn.configure(fg_color="#4A5568", hover_color="#2D3748")
  
     def lock_ui(self, lock):
         state = "disabled" if lock else "normal"
@@ -482,8 +890,8 @@ class VRChatTranslatorApp(ctk.CTk):
         self.btn_stop.configure(state="normal" if lock else "disabled")
  
     def on_setting_changed(self, event=None):
-        self.config["speaker_device"] = get_device_name_only(self.combo_speaker.get())
-        self.config["mic_device"] = get_device_name_only(self.combo_mic.get())
+        self.config["speaker_device"] = self.combo_speaker.get()
+        self.config["mic_device"] = self.combo_mic.get()
         self.config["listen_stt"] = self.combo_listen_stt.get()
         self.config["listen_mt"] = self.combo_listen_mt.get()
         self.config["speak_stt"] = self.combo_speak_stt.get()
@@ -500,42 +908,143 @@ class VRChatTranslatorApp(ctk.CTk):
     def on_start(self):
         self.on_setting_changed()
         
-        # Get current indexes based on selected device names
-        spk_name = get_device_name_only(self.combo_speaker.get())
-        mic_name = get_device_name_only(self.combo_mic.get())
+        # Get selected full names
+        spk_val = self.combo_speaker.get()
+        mic_val = self.combo_mic.get()
+        
+        logger.info(f"on_start - Speaker selected: {spk_val}")
+        logger.info(f"on_start - Mic selected: {mic_val}")
+        
+        # Parse API name and device name
+        def parse_combo_val(val):
+            if val.startswith("[") and "]" in val:
+                parts = val.split("]", 1)
+                api = parts[0][1:].strip()
+                name = parts[1].strip()
+                return api, name
+            return None, val
+            
+        spk_api, spk_name = parse_combo_val(spk_val)
+        mic_api, mic_name = parse_combo_val(mic_val)
         
         self.speaker_idx = None
         self.mic_idx = None
         
-        devs = sd.query_devices()
-        for i, dev in enumerate(devs):
-            if dev['max_input_channels'] > 0:
-                if dev['name'] == spk_name and self.speaker_idx is None:
-                    self.speaker_idx = i
-                if dev['name'] == mic_name and self.mic_idx is None:
+        # 1. Resolve mic index (input device)
+        for i, name, api in self.devices_input:
+            if name == mic_name and api == mic_api:
+                self.mic_idx = i
+                break
+                
+        # Fallback for mic: if api didn't match, match only by clean name
+        if self.mic_idx is None:
+            for i, name, api in self.devices_input:
+                if name == mic_name:
                     self.mic_idx = i
-                    
+                    logger.info(f"Mic resolved via fallback (name-only): {name} -> index {i}")
+                    break
+                
+        # 2. Resolve speaker index
+        # First check if the selected speaker is direct input (like CABLE Output or Stereo Mix)
+        for i, name, api in self.devices_input:
+            if name == spk_name and api == spk_api:
+                self.speaker_idx = i
+                break
+                
+        # Fallback for speaker direct input (name-only match)
+        if self.speaker_idx is None:
+            for i, name, api in self.devices_input:
+                if name == spk_name:
+                    self.speaker_idx = i
+                    logger.info(f"Speaker resolved direct input via fallback (name-only): {spk_name} -> index {i}")
+                    break
+                
+        # If not, it is an output device (like Speakers). We map it to its loopback input device.
+        if self.speaker_idx is None:
+            target_loopback_names = []
+            if "cable input" in spk_name.lower():
+                # VB-Cable output mapping
+                target_loopback_names.append(spk_name.lower().replace("cable input", "cable output"))
+            
+            # WASAPI Loopback name mappings
+            target_loopback_names.append(spk_name.lower() + " (loopback)")
+            target_loopback_names.append(spk_name.lower() + " (ループバック)")
+            
+            # First try matching target loopback names with API name
+            for i, name, api in self.devices_input:
+                if api == "Windows WASAPI" or api == spk_api:
+                    if name.lower() in target_loopback_names or any(t in name.lower() for t in target_loopback_names):
+                        self.speaker_idx = i
+                        break
+                        
+            # Fallback loopback search ignoring API name
+            if self.speaker_idx is None:
+                for i, name, api in self.devices_input:
+                    if name.lower() in target_loopback_names or any(t in name.lower() for t in target_loopback_names):
+                        self.speaker_idx = i
+                        logger.info(f"Speaker loopback resolved via fallback (ignoring API): {name} -> index {i}")
+                        break
+                        
+            # Fallback containing speaker name (with API match)
+            if self.speaker_idx is None:
+                for i, name, api in self.devices_input:
+                    if spk_name.lower() in name.lower() and (api == "Windows WASAPI" or api == spk_api):
+                        self.speaker_idx = i
+                        break
+                        
+            # Fallback containing speaker name (ignoring API match)
+            if self.speaker_idx is None:
+                for i, name, api in self.devices_input:
+                    if spk_name.lower() in name.lower():
+                        self.speaker_idx = i
+                        logger.info(f"Speaker resolved containing fallback (ignoring API): {name} -> index {i}")
+                        break
+                        
         if self.speaker_idx is None or self.mic_idx is None:
-            self.log("エラー: 設定されたデバイスが見つかりません。接続を確認してください。")
-            return
+            # Try to fallback to system default input device
+            try:
+                import sounddevice as sd
+                default_input_idx = sd.default.device[0]
+                if default_input_idx >= 0:
+                    if self.speaker_idx is None:
+                        self.speaker_idx = default_input_idx
+                        logger.warning(f"Speaker loopback resolution failed. Falling back to default input index {default_input_idx}")
+                        self.log("警告: スピーカー録音デバイスの解決に失敗したため、システム規定の入力を使用します。")
+                    if self.mic_idx is None:
+                        self.mic_idx = default_input_idx
+                        logger.warning(f"Mic resolution failed. Falling back to default input index {default_input_idx}")
+                        self.log("警告: マイクデバイスの解決に失敗したため、システム規定の入力を使用します。")
+            except Exception as fe:
+                logger.error(f"Fallback resolution failed: {fe}")
 
+        if self.speaker_idx is None or self.mic_idx is None:
+            err_details = []
+            if self.speaker_idx is None:
+                err_details.append(f"Speaker ({spk_val}) not resolved")
+            if self.mic_idx is None:
+                err_details.append(f"Mic ({mic_val}) not resolved")
+            logger.error(f"Device resolution failed: {', '.join(err_details)}")
+            self.log(f"-> {', '.join(err_details)}")
+            self.log_localized("err_no_device")
+            return
+ 
         self.lock_ui(True)
         self.btn_stop.configure(state="disabled") # Temporary while loading
-        self.log("\n--- 初期化中 ---")
+        self.log_localized("initializing")
         
         self.is_running = True
         threading.Thread(target=self.init_and_run, daemon=True).start()
  
     def on_stop(self):
         self.is_running = False
-        self.log("停止処理を行っています...")
+        self.log_localized("stopping")
         if self.speaker_recorder:
             self.speaker_recorder.stop()
         if self.mic_recorder:
             self.mic_recorder.stop()
             
         self.lock_ui(False)
-        self.log("--- 停止しました ---")
+        self.log_localized("stopped")
  
     def init_and_run(self):
         try:
@@ -551,26 +1060,25 @@ class VRChatTranslatorApp(ctk.CTk):
                     with open(model_path, 'rb') as _f:
                         _magic = _f.read(4)
                     if _magic != b'GGUF':
-                        self.log(f"エラー: モデルファイルが破損しています (magic={_magic.hex()})。")
-                        self.log("models フォルダ内の .gguf ファイルを削除して再起動してください。")
+                        self.log_localized("gpu_fail_cpu_retry", f" (Invalid GGUF)")
                         self.after(0, self.on_stop)
                         return
                 except Exception as _ve:
-                    self.log(f"エラー: モデルファイルを読み取れません: {_ve}")
+                    self.log_localized("cpu_fail", f" ({_ve})")
                     self.after(0, self.on_stop)
                     return
  
-                self.log("Hy-MT2 (LLM) をロード中...")
+                self.log_localized("llm_loading")
                 try:
                     self.llm = Llama(model_path=model_path, n_gpu_layers=-1, n_ctx=2048, verbose=False)
-                    self.log("-> GPU モードでロードしました")
+                    self.log_localized("gpu_loaded")
                 except Exception as gpu_e:
-                    self.log(f"-> GPU モード失敗。CPU モードで再試行します... ({gpu_e})")
+                    self.log_localized("gpu_fail_cpu_retry", f"({gpu_e})")
                     try:
                         self.llm = Llama(model_path=model_path, n_gpu_layers=0, n_ctx=2048, verbose=True)
-                        self.log("-> CPU モードでロードしました")
+                        self.log_localized("cpu_loaded")
                     except Exception as cpu_e:
-                        self.log(f"-> CPU モードも失敗しました: {cpu_e}")
+                        self.log_localized("cpu_fail", f"{cpu_e}")
                         raise cpu_e
             if not self.is_running: return
                 
@@ -578,33 +1086,33 @@ class VRChatTranslatorApp(ctk.CTk):
             listen_stt_val = self.config.get("listen_stt", "English (英語)")
             if listen_stt_val == "English (英語)":
                 if self.moonshine_model_en is None:
-                    self.log("Moonshine (英語音声認識・爆速) をロード中...")
+                    self.log_localized("moonshine_loading_en")
                     try:
                         self.moonshine_model_en = moonshine_onnx.MoonshineOnnxModel(model_name="useful-sensors/moonshine/tiny")
-                        self.log("-> Moonshine (英語用) をロードしました")
+                        self.log_localized("moonshine_loaded_en")
                     except Exception as e:
-                        self.log(f"-> Moonshine 英語初期化失敗: {e}")
+                        self.log_localized("moonshine_fail_en", f"{e}")
                         raise e
             elif listen_stt_val == "Spanish (スペイン語)":
                 if self.moonshine_model_es is None:
-                    self.log("Moonshine (スペイン語音声認識・爆速) モデルを準備中...")
+                    self.log_localized("moonshine_prep_es")
                     try:
                         es_dir = download_moonshine_es_if_needed(self.log)
-                        self.log("Moonshine (スペイン語音声認識・爆速) をロード中...")
+                        self.log_localized("moonshine_loading_es")
                         self.moonshine_model_es = moonshine_onnx.MoonshineOnnxModel(models_dir=es_dir, model_name="moonshine-es-base")
-                        self.log("-> Moonshine (スペイン語用) をロードしました")
+                        self.log_localized("moonshine_loaded_es")
                     except Exception as e:
-                        self.log(f"-> Moonshine スペイン語初期化失敗: {e}")
+                        self.log_localized("moonshine_fail_es", f"{e}")
                         raise e
-
+ 
             # Load Faster-Whisper (Japanese STT)
             if self.whisper_model is None:
-                self.log("Faster-Whisper (スピーキング用) をロード中...")
+                self.log_localized("whisper_loading")
                 try:
                     self.whisper_model = WhisperModel(WHISPER_MODEL_SIZE, device="cuda", compute_type="float16", cpu_threads=1, num_workers=1)
-                    self.log("-> Faster-Whisper GPU モードでロードしました")
+                    self.log_localized("whisper_gpu")
                 except Exception as e:
-                    self.log(f"-> Faster-Whisper GPU初期化失敗。CPUモードで実行します。({e})")
+                    self.log_localized("whisper_cpu_fail", f"({e})")
                     self.whisper_model = WhisperModel(WHISPER_MODEL_SIZE, device="cpu", compute_type="int8", cpu_threads=1, num_workers=1)
             if not self.is_running: return
                     
@@ -617,7 +1125,7 @@ class VRChatTranslatorApp(ctk.CTk):
             
             self.osc_client = udp_client.SimpleUDPClient(OSC_IP, OSC_PORT)
             
-            self.log("--- 準備完了！ 翻訳を開始しました ---")
+            self.log_localized("ready")
             self.after(0, lambda: self.btn_stop.configure(state="normal"))
             
             # 5. Start Processing Threads
@@ -627,8 +1135,8 @@ class VRChatTranslatorApp(ctk.CTk):
             t2.start()
             
         except Exception as e:
-            logger.exception("初期化中にエラーが発生しました")
-            self.log(f"初期化中にエラーが発生しました: {e}")
+            logger.exception("Initialization error")
+            self.log(f"Error: {e}")
             self.after(0, self.on_stop)
  
     def pipeline_listen(self):
@@ -641,17 +1149,14 @@ class VRChatTranslatorApp(ctk.CTk):
                 
                 listen_stt_val = self.config.get("listen_stt", "English (英語)")
                 if listen_stt_val == "English (英語)":
-                    # 英語は Moonshine を用いて超高速・暴走なしで文字起こし
                     text_list = moonshine_onnx.transcribe(audio_data, model=self.moonshine_model_en)
                     text = "".join(text_list).strip()
                     source_lang_name = "English"
                 elif listen_stt_val == "Spanish (スペイン語)":
-                    # スペイン語も Moonshine を用いて超高速・暴走なしで文字起こし
                     text_list = moonshine_onnx.transcribe(audio_data, model=self.moonshine_model_es)
                     text = "".join(text_list).strip()
                     source_lang_name = "Spanish"
                 else:
-                    # 英語以外は WhisperModel で文字起こし
                     stt_lang_code = LANG_CODE_MAP.get(listen_stt_val)
                     segments, info = self.whisper_model.transcribe(
                         audio_data,
@@ -675,9 +1180,23 @@ class VRChatTranslatorApp(ctk.CTk):
                                 break
                 
                 if text:
-                    self.log(f"[相手 - {source_lang_name}] {text}")
-                    translated = translate_text(self.llm, text, source_lang_name, mt_target)
-                    self.log(f"  -> [翻訳 ({mt_target})] {translated}\n")
+                    # Limit maximum length to prevent GGUF parser stack overflow
+                    if len(text) > 150:
+                        text = text[:150] + "..."
+                        
+                    lang_key = self.config.get("ui_lang", "JP")
+                    loc = UI_LOCALIZATION.get(lang_key, UI_LOCALIZATION["JP"])
+                    partner_lbl = loc["partner"]
+                    translation_lbl = loc["translation"]
+                    
+                    self.log(f"[{partner_lbl} - {source_lang_name}] {text}")
+                    
+                    if is_hallucination_or_excessive_repeat(text):
+                        logger.warning(f"Skipping translation for repeated text to prevent LLM crash: {text}")
+                        self.log(f"  -> [{translation_lbl}] (繰り返し音声を検知したため、翻訳をスキップしました)\n")
+                    else:
+                        translated = translate_text(self.llm, text, source_lang_name, mt_target)
+                        self.log(f"  -> [{translation_lbl} ({mt_target})] {translated}\n")
             except queue.Empty:
                 continue
             except Exception as e:
@@ -710,14 +1229,30 @@ class VRChatTranslatorApp(ctk.CTk):
                 text = "".join([segment.text for segment in segments]).strip()
                 
                 if text:
-                    self.log(f"[自分 - {info.language}] {text}")
+                    # Limit maximum length to prevent GGUF parser stack overflow
+                    if len(text) > 150:
+                        text = text[:150] + "..."
+                        
+                    lang_key = self.config.get("ui_lang", "JP")
+                    loc = UI_LOCALIZATION.get(lang_key, UI_LOCALIZATION["JP"])
+                    me_lbl = loc["me"]
+                    chatbox_lbl = loc["chatbox"]
+                    
+                    # Determine input language name
                     source_lang_name = "English"
                     for k, v in LANG_CODE_MAP.items():
                         if v == info.language:
                             source_lang_name = LANG_NAME_MAP.get(k, "English")
                             break
-                    translated = translate_text(self.llm, text, source_lang_name, mt_target)
-                    self.log(f"  -> [ChatBox ({mt_target})] {translated}\n")
+                    
+                    self.log(f"[{me_lbl} - {info.language}] {text}")
+                    
+                    if is_hallucination_or_excessive_repeat(text):
+                        logger.warning(f"Skipping translation for repeated text to prevent LLM crash: {text}")
+                        self.log(f"  -> [{chatbox_lbl}] (繰り返し音声を検知したため、翻訳をスキップしました)\n")
+                    else:
+                        translated = translate_text(self.llm, text, source_lang_name, mt_target)
+                        self.log(f"  -> [{chatbox_lbl} ({mt_target})] {translated}\n")
                     if self.config.get("use_osc", True):
                         self.osc_client.send_message("/chatbox/input", [translated, True])
             except queue.Empty:

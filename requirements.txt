@@ -1,0 +1,8 @@
+onnxruntime-gpu
+useful-moonshine-onnx
+faster-whisper
+python-osc
+sounddevice
+numpy
+huggingface-hub
+customtkinter

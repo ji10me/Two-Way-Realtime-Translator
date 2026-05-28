@@ -641,19 +641,30 @@ def is_hallucination_or_excessive_repeat(text):
                 
     return False
 
-def translate_text(llm, text, source_lang, target_lang):
+def translate_text(llm, text, source_lang, target_lang, lock=None):
     if source_lang == target_lang:
         return text
     prompt_text = f"Translate the following {source_lang} text to {target_lang}. Output ONLY the translated text without any explanation or quotes.\n\nText: {text}\n\nTranslation:"
     
-    response = llm.create_chat_completion(
-        messages=[
-            {"role": "system", "content": "You are a helpful and highly skilled translator."},
-            {"role": "user", "content": prompt_text}
-        ],
-        max_tokens=256,
-        temperature=0.1
-    )
+    if lock:
+        with lock:
+            response = llm.create_chat_completion(
+                messages=[
+                    {"role": "system", "content": "You are a helpful and highly skilled translator."},
+                    {"role": "user", "content": prompt_text}
+                ],
+                max_tokens=256,
+                temperature=0.1
+            )
+    else:
+        response = llm.create_chat_completion(
+            messages=[
+                {"role": "system", "content": "You are a helpful and highly skilled translator."},
+                {"role": "user", "content": prompt_text}
+            ],
+            max_tokens=256,
+            temperature=0.1
+        )
     result = response['choices'][0]['message']['content'].strip()
     return result
 
@@ -674,6 +685,7 @@ class VRChatTranslatorApp(ctk.CTk):
         self.moonshine_model_en = None
         self.moonshine_model_es = None
         self.llm = None
+        self.llm_lock = threading.Lock()
         self.speaker_recorder = None
         self.mic_recorder = None
         
@@ -1181,8 +1193,8 @@ class VRChatTranslatorApp(ctk.CTk):
                 
                 if text:
                     # Limit maximum length to prevent GGUF parser stack overflow
-                    if len(text) > 150:
-                        text = text[:150] + "..."
+                    if len(text) > 400:
+                        text = text[:400] + "..."
                         
                     lang_key = self.config.get("ui_lang", "JP")
                     loc = UI_LOCALIZATION.get(lang_key, UI_LOCALIZATION["JP"])
@@ -1195,7 +1207,7 @@ class VRChatTranslatorApp(ctk.CTk):
                         logger.warning(f"Skipping translation for repeated text to prevent LLM crash: {text}")
                         self.log(f"  -> [{translation_lbl}] (繰り返し音声を検知したため、翻訳をスキップしました)\n")
                     else:
-                        translated = translate_text(self.llm, text, source_lang_name, mt_target)
+                        translated = translate_text(self.llm, text, source_lang_name, mt_target, self.llm_lock)
                         self.log(f"  -> [{translation_lbl} ({mt_target})] {translated}\n")
             except queue.Empty:
                 continue
@@ -1230,8 +1242,8 @@ class VRChatTranslatorApp(ctk.CTk):
                 
                 if text:
                     # Limit maximum length to prevent GGUF parser stack overflow
-                    if len(text) > 150:
-                        text = text[:150] + "..."
+                    if len(text) > 400:
+                        text = text[:400] + "..."
                         
                     lang_key = self.config.get("ui_lang", "JP")
                     loc = UI_LOCALIZATION.get(lang_key, UI_LOCALIZATION["JP"])
@@ -1251,10 +1263,10 @@ class VRChatTranslatorApp(ctk.CTk):
                         logger.warning(f"Skipping translation for repeated text to prevent LLM crash: {text}")
                         self.log(f"  -> [{chatbox_lbl}] (繰り返し音声を検知したため、翻訳をスキップしました)\n")
                     else:
-                        translated = translate_text(self.llm, text, source_lang_name, mt_target)
+                        translated = translate_text(self.llm, text, source_lang_name, mt_target, self.llm_lock)
                         self.log(f"  -> [{chatbox_lbl} ({mt_target})] {translated}\n")
-                    if self.config.get("use_osc", True):
-                        self.osc_client.send_message("/chatbox/input", [translated, True])
+                        if self.config.get("use_osc", True):
+                            self.osc_client.send_message("/chatbox/input", [translated, True])
             except queue.Empty:
                 continue
             except Exception as e:

@@ -148,11 +148,13 @@ except Exception:
 # ==========================================
 OSC_IP = "127.0.0.1"
 OSC_PORT = 9000
-WHISPER_MODEL_SIZE = "tiny"
-LLAMA_REPO = "tencent/Hy-MT2-1.8B-GGUF"
-LLAMA_FILE = "Hy-MT2-1.8B-Q4_K_M.gguf"
+WHISPER_MODEL_SIZE = "base"
+LLAMA_REPO_1_8B = "tencent/Hy-MT2-1.8B-GGUF"
+LLAMA_FILE_1_8B = "Hy-MT2-1.8B-Q4_K_M.gguf"
+LLAMA_REPO_7B = "tencent/Hy-MT2-7B-GGUF"
+LLAMA_FILE_7B = "Hy-MT2-7B-Q4_K_M.gguf"
 SAMPLE_RATE = 16000
-SILENCE_THRESHOLD = 0.01
+SILENCE_THRESHOLD = 0.02
 SILENCE_DURATION = 0.5
 CONFIG_FILE = os.path.join(base_dir, "config.json")
 
@@ -455,10 +457,10 @@ def save_config(config):
 
 MIN_MODEL_SIZE_BYTES = 500 * 1024 * 1024  # 500MB未満は破損とみなす
 
-def download_model_if_needed(log_callback):
+def download_model_if_needed(repo_id, filename, log_callback):
     models_dir = os.path.join(base_dir, "models")
     os.makedirs(models_dir, exist_ok=True)
-    model_path = os.path.join(models_dir, LLAMA_FILE)
+    model_path = os.path.join(models_dir, filename)
 
     needs_download = False
     if not os.path.exists(model_path):
@@ -466,7 +468,7 @@ def download_model_if_needed(log_callback):
     else:
         size = os.path.getsize(model_path)
         if size < MIN_MODEL_SIZE_BYTES:
-            log_callback(f"モデルファイルが破損しています ({size//1024//1024}MB)。再ダウンロードします...")
+            log_callback(f"モデルファイル {filename} が破損しています ({size//1024//1024}MB)。再ダウンロードします...")
             logger.warning(f"Model file too small ({size} bytes), re-downloading")
             os.remove(model_path)
             needs_download = True
@@ -474,9 +476,9 @@ def download_model_if_needed(log_callback):
             log_callback(f"モデル確認OK: {model_path} ({size//1024//1024}MB)")
 
     if needs_download:
-        log_callback(f"[{LLAMA_FILE}] のダウンロードを開始します (約1GB)...")
-        logger.info(f"Downloading {LLAMA_REPO}/{LLAMA_FILE} to {models_dir}")
-        downloaded_path = hf_hub_download(repo_id=LLAMA_REPO, filename=LLAMA_FILE, local_dir=models_dir)
+        log_callback(f"[{filename}] のダウンロードを開始します (約{ '1GB' if '1.8B' in filename else '4.5GB' })...")
+        logger.info(f"Downloading {repo_id}/{filename} to {models_dir}")
+        downloaded_path = hf_hub_download(repo_id=repo_id, filename=filename, local_dir=models_dir)
         size = os.path.getsize(downloaded_path)
         log_callback(f"ダウンロード完了: {downloaded_path} ({size//1024//1024}MB)")
         logger.info(f"Download complete: {downloaded_path} ({size} bytes)")
@@ -684,7 +686,8 @@ class VRChatTranslatorApp(ctk.CTk):
         self.whisper_model = None
         self.moonshine_model_en = None
         self.moonshine_model_es = None
-        self.llm = None
+        self.llm_1_8b = None
+        self.llm_7b = None
         self.llm_lock = threading.Lock()
         self.speaker_recorder = None
         self.mic_recorder = None
@@ -1060,37 +1063,39 @@ class VRChatTranslatorApp(ctk.CTk):
  
     def init_and_run(self):
         try:
-            # 1. Download Model
-            model_path = download_model_if_needed(self.log)
+            # 1. Download Models
+            model_path_1_8b = download_model_if_needed(LLAMA_REPO_1_8B, LLAMA_FILE_1_8B, self.log)
+            model_path_7b = download_model_if_needed(LLAMA_REPO_7B, LLAMA_FILE_7B, self.log)
             if not self.is_running: return
             
-            # 2. Load LLM
-            if self.llm is None:
-                model_size_mb = os.path.getsize(model_path) // 1024 // 1024
-                logger.info(f"Model file: {model_path} ({model_size_mb} MB)")
+            # 2. Load 1.8B LLM (for English -> Japanese)
+            if self.llm_1_8b is None:
+                self.log("Hy-MT2-1.8B (高速翻訳LLM) をロード中...")
                 try:
-                    with open(model_path, 'rb') as _f:
-                        _magic = _f.read(4)
-                    if _magic != b'GGUF':
-                        self.log_localized("gpu_fail_cpu_retry", f" (Invalid GGUF)")
-                        self.after(0, self.on_stop)
-                        return
-                except Exception as _ve:
-                    self.log_localized("cpu_fail", f" ({_ve})")
-                    self.after(0, self.on_stop)
-                    return
- 
-                self.log_localized("llm_loading")
-                try:
-                    self.llm = Llama(model_path=model_path, n_gpu_layers=-1, n_ctx=2048, verbose=False)
-                    self.log_localized("gpu_loaded")
+                    self.llm_1_8b = Llama(model_path=model_path_1_8b, n_gpu_layers=-1, n_ctx=2048, verbose=False)
+                    self.log("-> 1.8B: GPU モードでロードしました")
                 except Exception as gpu_e:
-                    self.log_localized("gpu_fail_cpu_retry", f"({gpu_e})")
+                    self.log(f"-> 1.8B: GPU失敗。CPUモードでロードします... ({gpu_e})")
                     try:
-                        self.llm = Llama(model_path=model_path, n_gpu_layers=0, n_ctx=2048, verbose=True)
-                        self.log_localized("cpu_loaded")
+                        self.llm_1_8b = Llama(model_path=model_path_1_8b, n_gpu_layers=0, n_ctx=2048, verbose=True)
+                        self.log("-> 1.8B: CPU モードでロードしました")
                     except Exception as cpu_e:
-                        self.log_localized("cpu_fail", f"{cpu_e}")
+                        self.log(f"-> 1.8B: CPUモードも失敗しました: {cpu_e}")
+                        raise cpu_e
+            
+            # Load 7B LLM (for Japanese -> English)
+            if self.llm_7b is None:
+                self.log("Hy-MT2-7B (高精度翻訳LLM) をロード中...")
+                try:
+                    self.llm_7b = Llama(model_path=model_path_7b, n_gpu_layers=-1, n_ctx=2048, verbose=False)
+                    self.log("-> 7B: GPU モードでロードしました")
+                except Exception as gpu_e:
+                    self.log(f"-> 7B: GPU失敗。CPUモードでロードします... ({gpu_e})")
+                    try:
+                        self.llm_7b = Llama(model_path=model_path_7b, n_gpu_layers=0, n_ctx=2048, verbose=True)
+                        self.log("-> 7B: CPU モードでロードしました")
+                    except Exception as cpu_e:
+                        self.log(f"-> 7B: CPUモードも失敗しました: {cpu_e}")
                         raise cpu_e
             if not self.is_running: return
                 
@@ -1207,7 +1212,7 @@ class VRChatTranslatorApp(ctk.CTk):
                         logger.warning(f"Skipping translation for repeated text to prevent LLM crash: {text}")
                         self.log(f"  -> [{translation_lbl}] (繰り返し音声を検知したため、翻訳をスキップしました)\n")
                     else:
-                        translated = translate_text(self.llm, text, source_lang_name, mt_target, self.llm_lock)
+                        translated = translate_text(self.llm_1_8b, text, source_lang_name, mt_target, self.llm_lock)
                         self.log(f"  -> [{translation_lbl} ({mt_target})] {translated}\n")
             except queue.Empty:
                 continue
@@ -1263,7 +1268,7 @@ class VRChatTranslatorApp(ctk.CTk):
                         logger.warning(f"Skipping translation for repeated text to prevent LLM crash: {text}")
                         self.log(f"  -> [{chatbox_lbl}] (繰り返し音声を検知したため、翻訳をスキップしました)\n")
                     else:
-                        translated = translate_text(self.llm, text, source_lang_name, mt_target, self.llm_lock)
+                        translated = translate_text(self.llm_7b, text, source_lang_name, mt_target, self.llm_lock)
                         self.log(f"  -> [{chatbox_lbl} ({mt_target})] {translated}\n")
                         if self.config.get("use_osc", True):
                             self.osc_client.send_message("/chatbox/input", [translated, True])
